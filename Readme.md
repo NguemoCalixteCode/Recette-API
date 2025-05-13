@@ -1,76 +1,81 @@
-# API Recettes de Cuisine – Guide Complet
+# 🧾 Recettes API
 
-Cette application est une API REST développée en Java avec Spring Boot. Elle permet de gérer des **recettes de cuisine**, leurs **ingrédients** et leurs **catégories**. Ce guide vous explique comment **l’installer, la lancer avec Docker**, et comment **la tester avec Postman**.
-
----
-
-## Prérequis
-
-- Java 17+ 
-- Maven (pour compiler une fois le .jar)
-- Docker & Docker Compose
-- Postman (pour tester l’API)
+Une API REST développée en Java avec Spring Boot pour gérer des recettes de cuisine, leurs ingrédients et catégories. Le projet est conteneurisé avec Docker et testé avec Postman.
 
 ---
 
-## Structure technique
+## 🚀 Fonctionnalités
 
-- Backend : Spring Boot (Java)
-- Base de données : MariaDB
-- Conteneurisation : Docker + Docker Compose
-- Tests : Postman (collection fournie)
+- Création, consultation, modification et suppression de recettes
+- Gestion des ingrédients et des catégories
+- Recherche par nom pour recettes, ingrédients, et catégories
+- Liaison recette ↔ ingrédients avec quantités et unités
+- Export Postman pour test des routes
 
 ---
 
-## Étapes de lancement de l’application
+## 🛠️ Technologies utilisées
 
-### 1. Compiler le projet
+- **Java 17**
+- **Spring Boot**
+- **Spring Data JPA** (ORM)
+- **MariaDB** (base de données)
+- **Docker & Docker Compose**
+- **Postman**
+- **DBeaver** (visualisation BDD)
+- **Git** (versionning)
 
+---
+
+## ✅ Pré-requis
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Postman pour tester l'API
+
+---
+
+## ⚙️ Lancement du projet
+
+1. Clone du projet :
 ```bash
-mvn clean package
+git clone https://github.com/NguemoCalixteCode/Recette-API.git
+cd recettes-api
 ```
 
-Cela génère `target/recettes-api-0.0.1-SNAPSHOT.jar`.
-
-### 2. Lancement global
-
+2. Lancer les conteneurs Docker :
 ```bash
-docker compose down --remove-orphans
-docker compose up --build
+docker-compose up --build
 ```
 
-### 3. Lancement des  services
+3. L’API sera accessible sur : [http://localhost:8081](http://localhost:8081)
 
-```bash
-docker-compose up -d mariadb     # Démarre uniquement la base de données
-docker-compose up recettes-api   # Démarre l'application Spring Boot
+4. La base MariaDB écoute sur : `localhost:3306`  
+   - Utilisateur : `root`  
+   - Mot de passe : `secret`  
+   - Base : `recettes_db`
+
+---
+
+## 🧱 Structure du projet
+
+```
+src/
+├── controllers/
+├── services/
+├── repositories/
+├── dto/
+├── entities/
 ```
 
-###  Vérifier les conteneurs
-
-```bash
-docker ps
-```
-
-Tu dois voir :
-- `recettes-api-mariadb-1`
-- `recettes-api-recettes-api-1`
+---
 
 ##  Tester l’API avec Postman
 
 ### 1. Ouvrir Postman
 ### 2. Importer la collection `recettes-api-collection-postman.json` et tester les requêtes de la collection.
-
-## Nettoyer l’environnement
-
-```bash
-docker compose down -v
-```
-
-Supprime les conteneurs et les volumes (supprime les données).
-
 ---
 
-##  Auteur
+## 👤 Auteur
 
-Projet réalisé par **Calixte Nguemo** dans le cadre du TP 4AMS.
+Calixte Nguemo  
+
